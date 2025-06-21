@@ -3,22 +3,21 @@ require './classes/ProjectManager.php';
 
 $projectManager = new ProjectManager();
 
-// On vérifie si l'ID du projet est passé dans l'URL
+// Retrieve project by ID from URL, redirect if not found
 if (isset($_GET["id"])) {
     $projectId = $_GET["id"];
     $project = $projectManager->getProject($projectId);
 
-    // Si le projet n'existe pas, on redirige vers la page d'accueil
     if (!$project) {
         header("Location: index.php");
         exit();
     }
 } else {
-    // Si l'ID n'est pas passé dans l'URL, on redirige vers la page d'accueil
     header("Location: index.php");
     exit();
 }
 ?>
+<!-- HTML for displaying project details in read-only mode -->
 
 <!DOCTYPE html>
 <html lang="fr">

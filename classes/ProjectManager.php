@@ -33,6 +33,7 @@ class ProjectManager {
         $stmt->execute();
         $project = $stmt->fetch();
 
+        //explode categories into an array if not empty
         if ($project && !empty($project['categories'])) {
             $project['categories'] = explode(',', $project['categories']);
         }
@@ -51,6 +52,7 @@ class ProjectManager {
         $stmt->bindValue(':description', $project->getDescription());
         $stmt->bindValue(':status', $project->getStatus());
         $stmt->bindValue(':priority', $project->getPriority());
+        // Convert categories array to a comma-separated string
         $stmt->bindValue(':categories', implode(',', $project->getCategories()));
         return $stmt->execute();
     }

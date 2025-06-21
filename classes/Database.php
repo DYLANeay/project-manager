@@ -1,7 +1,7 @@
 <?php
 
 class Database {
-    const DATABASE_FILE = '../projectManager.db';
+    const DATABASE_FILE = './projectManager.db';
 
     private $pdo;
 
